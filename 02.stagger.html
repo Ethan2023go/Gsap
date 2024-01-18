@@ -70,11 +70,11 @@
   <script src="./gsap/gsap.js"></script>
   <script>
     gsap.to('.box1', {
-      y: 50,
-      duration: 3,
+      y: 100,
+      duration: 1,
       // stagger: 0.1,
       stagger: {
-        each: 0.4,
+        each: 0.1,
         // from: 'start', // 數值是從第幾個 index 開始，關鍵字 'start'、'end'、'center'、'random
         repeat: -1, // 重複次數，-1 無限循環'
         yoyo: true,
@@ -93,12 +93,12 @@
     })
 
     // fromTo 指定元素補間動畫從 from 設定狀態1 到 to 設定狀態2
-    gsap.fromTo('.box3',{
-      x:1000,
-    },{
-      x:-50,
+    gsap.fromTo('.box3', {
+      x: 1000,
+    }, {
+      x: -50,
       duration: 3,
-      delay:1 //動畫屬性要在to 這裡設定，例如delay、duration...
+      delay: 1 // 動畫屬性要在 to 這裡設定，例如 delay、duration...
     })
   </script>
 </body>
