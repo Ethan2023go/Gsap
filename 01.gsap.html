@@ -67,16 +67,12 @@
     <h1>3.設定 CSS 屬性</h1>
     <div class="box5" style="margin: auto;"></div>
     <p id="word">客人不能能夠許多寶寶概念看起來業主，品質之類紛紛戰爭榮譽昨天體會經常投入人氣記錄收藏本頁，認為正常認為尤其是結束環節一定要面向旁邊電影也要，春天思維來到那就我愛或是您可以要求女友進口，參加似乎免費版帶著道德整理些什麼分為，重視優質創意閲讀者，首次高雄，懂。</p>
-  </div>
 
-
-    <h1>4.設定動畫數性</h1>
+    <h1>4.設定動畫屬性</h1>
     <div class="box6"></div>
-    <button type="button"></button>
-    <button type="button"></button>
-
-
-
+    <button id="play">play</button>
+    <button id="pause">pause</button>
+  </div>
   <!-- jQuery -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js'></script>
   <!-- bootstrap -->
@@ -115,6 +111,7 @@
     })
 
     // 3.設定 CSS 屬性 -------------------------------------------
+    // CSS 的屬性都可以使用
     const tween3 = gsap.to('.box5', {
       x: 100, // translateX
       y: 100, // translateY
@@ -128,24 +125,39 @@
       backdropFilter: 'blur(2px)',
     })
 
-        
-     // 文字進入頁面 隨機選擇動畫
-     const word =gsap.to('#word',{
-      color: 'random([red,green,blue])', //隨機顏色，使用random(),是一個字串
-      frontWeight:'bold',
-      fontSize:'1.5rem',
-      lineHeight:2,
-      litterSpacing:'0.5rem',
-     })
+    const word = gsap.to('#word', {
+      color: 'random([red, green, blue])', // 隨機顏色，使用 random()，是一個字串
+      fontWeight: 'bold',
+      fontSize: '1.5rem',
+      lineHeight: 2,
+      letterSpacing: '0.5rem',
+    })
 
-     //4.設定動畫屬性 -------
-     const tween4= gsap.to('.box6'){
-      x:500,
-      
-     }
+    // 4.設定動畫屬性 -------------------------------------------
+    const tween4 = gsap.to('.box6', {
+      x: 500,
+      // x: '+=100', // 相對位置
+      // x: 'random(0, 100)', // 隨機位置
+      duration: 3,
+      paused: true,
+      // delay: 3, // 延遲 3 秒後開始，delay 屬於初始播放的延遲時間
+      // repeat: 2, // 重複 2 次，初始播放不算，所以會播放 3 次
+      repeat: -1, // 無限重複
+      // repeatDelay: 2, // 重複播放的延遲時間
+      // repeatRefresh: true, // 重複播放時，會紀錄前一次的狀態再執行，需與相對位置、隨機搭配使用
+      yoyo: true, // 重複播放時，會來回播放
+      // ease: "back.inOut(4)", // 動畫速率
+      ease: "steps(5)", // 動畫速率
+    })
 
-
-      
+    // tween 提供許多方法來控制動畫
+    // https://gsap.com/docs/v3/GSAP/Tween
+    $('#play').on('click', function () {
+      tween4.play()
+    })
+    $('#pause').on('click', function () {
+      tween4.pause()
+    })
   </script>
 </body>
 
