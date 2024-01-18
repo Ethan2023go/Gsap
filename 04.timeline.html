@@ -122,6 +122,19 @@
         duration: 1,
         ease: 'power1.back'
       },
+      rapeat: 1,
+      reapetdelay:1, //重複播放的延遲
+      // yoyo:true,
+      delay:1, //初始播放的延遲
+      repeatRefresh: true,
+      onstart(p1,p2){
+        console.log(p1,p2);
+      },
+      onStartParams:['時間軸動畫結束','KaiFu'],
+      onComplete: function(p1,p2){
+        console.log(p1,p2);
+      }
+      
     })
     tl4
       .to('.box13', { x: '+=100' })
