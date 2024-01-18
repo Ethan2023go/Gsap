@@ -75,6 +75,9 @@
     <div class="box13"></div>
     <div class="box14"></div>
     <div class="box15"></div>
+    <div class="progress mb-3">
+      <div class="progress-bar"></div>
+    </div>
   </div>
   <!-- jQuery -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js'></script>
@@ -122,19 +125,26 @@
         duration: 1,
         ease: 'power1.back'
       },
-      rapeat: 1,
-      reapetdelay:1, //重複播放的延遲
-      // yoyo:true,
-      delay:1, //初始播放的延遲
+      repeat: 1,
+      repeatDelay: 1, // 重複播放的延遲
+      // yoyo: true,
+      delay: 1, // 初始播放的延遲
       repeatRefresh: true,
-      onstart(p1,p2){
-        console.log(p1,p2);
+      onStart(p1, p2) {
+        console.log(p1, p2)
       },
-      onStartParams:['時間軸動畫結束','KaiFu'],
-      onComplete: function(p1,p2){
-        console.log(p1,p2);
-      }
-      
+      onStartParams: ['時間軸動畫開始', 'KaiFu'],
+      onComplete: function (p1, p2) {
+        console.log(p1, p2)
+      },
+      onCompleteParams: ['時間軸動畫結束', 'KaiFu'],
+      onUpdate(p1, p2) {
+        // console.log(p1, p2, this.progress().toFixed(2))
+        $('.progress-bar').css({
+          width: this.totalProgress() * 100 + '%'
+        })
+      },
+      onUpdateParams: ['時間軸動畫更新', 'KaiFu'],
     })
     tl4
       .to('.box13', { x: '+=100' })
